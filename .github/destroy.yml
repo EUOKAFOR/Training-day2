@@ -5,7 +5,7 @@ on:
 
 jobs:
 
-    build:
+    destroy:
 
         runs-on: ubuntu-latest
         steps:
@@ -50,13 +50,13 @@ jobs:
 
               id: plan
 
-              run: terraform plan
+              run: terraform plan -destroy -out=tfplan-destroy
 
               working-directory: .
 
             - name: Terraform Destroy
 
-              id: apply
+              id: destroy
 
               run: terraform destroy --auto-approve
 
